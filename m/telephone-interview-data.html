@@ -1,0 +1,41 @@
+<section>
+  VmInclude:__COMPONENT__/g/grid.01.html
+</section>
+<script>
+  function F__ID(){
+      //-------------------------------------
+      VmInclude:__CURRENT_PATH__/grid.01.js
+      //-------------------------------------
+      $('#title__ID').text('SmartSleep-60 Telephone Interview')
+      //-------------------------------------
+      var fields="Screening_ID|UID,name,mobile_number,email,date,Q_1,Q_2,Q_3,Q_4,Q_5,Q_6,Q_7,Q_8,Q_9,Q_10,Q_11";
+      m.fields=""+fields+",Submit_date,Submitted_by,_Delete";
+      //-------------------------------------
+      m.load=function(){
+        m.query={"Data.age": {"$ne" : "N"}}
+      }
+      //-------------------------------------
+      m.cell_render=function(records,I,field,td,set_value,source){
+        switch(field){
+            case '_telephone_interview':
+                td.html("<u style='cursor:pointer'>Data Entry</u>");
+                td.find('u').on('click',function(){
+                $vm.load_module('smartsleep-60-telephone-interview','',{});
+                });
+                break;
+            case '_Setup':
+                td.html("<u style='cursor:pointer'>Setup</u>");
+                td.find('u').on('click',function(){
+                  $vm.load_module(m.questionnaire_setup,'',{record:records[I]});
+                });
+                break;
+            case '_send_email':
+                break;
+        }
+      }
+
+  }
+</script>
+<style>
+  VmInclude:__COMPONENT__/g/grid.01.css
+</style>

@@ -1,0 +1,64 @@
+<section>
+  VmInclude:__COMPONENT__/g/grid.01.html
+</section>
+<script>
+  function F__ID(){
+      //-------------------------------------
+      VmInclude:__CURRENT_PATH__/grid.01.js
+      //-------------------------------------
+      $('#title__ID').text('SmartSleep-60 Survey - eligible')
+      //-------------------------------------
+      var fields="Screening_ID|UID,_telephone_interview,_send_email,_access_code,name,mobile_number,email";
+      fields+=",age,fluent,smart_phone";
+      fields+=",osa,sbd,rls,narcolepsy,insomnia,none";
+      fields+=",shiftwork,shifts,sleep_hours,trouble_sleep,sleep_time,trouble_wake,wake_time,awake_type,commitments";
+      fields+=",problem,eligible"
+      m.fields=""+fields+",Submit_date,Submitted_by,_Delete";
+      //-------------------------------------
+      m.load=function(){
+        m.query={"Data.age": {"$ne" : "N"}}
+      }
+      //-------------------------------------
+      m.cell_render=function(records,I,field,td,set_value,source){
+        switch(field){
+            case '_telephone_interview':
+                var html="<u style='cursor:pointer'>Interview</u>";
+                var s=records[I].Data.date
+                if(s!='' && s!=null && s!=undefined){
+                  html="<u style='cursor:pointer'>"+records[I].Data.date+"</u> <i style='color:green;font-weight: 900' class='far fa-check-circle'></i>";
+                }
+                td.html(html);
+                td.find('u').on('click',function(){
+                  $vm.load_module('smartsleep-60-telephone-interview','',{record:records[I],goback:1});
+                });
+                break;
+            case '_access_code':
+                var html="<u style='cursor:pointer'>Access Code</u>";
+                var s=records[I].Data.access_code
+                if(s!='' && s!=null && s!=undefined){
+                  html="<u style='cursor:pointer'>"+records[I].Data.access_code+"</u> <i style='color:green;font-weight: 900' class='far fa-check-circle'></i>";
+                }
+                td.html(html);
+                td.find('u').on('click',function(){
+                  $vm.load_module('smartsleep-60-access-code','',{record:records[I],goback:1});
+                });
+                break;
+            case '_send_email':
+                var html="<u style='cursor:pointer;green'>email</u>";
+                var s=records[I].Data['email_date'];
+                if(s!='' && s!=null && s!=undefined){
+                    html+=' <i style="color:green;font-weight: 900" class="far fa-check-circle"></i>';
+                }
+                td.html(html);
+                td.find('u').on('click',function(){
+                    $vm.load_module_v2('send-email','',{record:records[I],email:'email_date',title:'Send Email',goback:1})
+                })
+                break;
+        }
+      }
+
+  }
+</script>
+<style>
+  VmInclude:__COMPONENT__/g/grid.01.css
+</style>

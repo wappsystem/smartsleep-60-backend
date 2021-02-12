@@ -1,0 +1,26 @@
+<section>
+  VmInclude:__COMPONENT__/g/grid.01.html
+</section>
+<script>
+  function F__ID(){
+      //-------------------------------------
+      VmInclude:__CURRENT_PATH__/grid.01.js
+      //-------------------------------------
+      $('#title__ID').text('SmartSleep-60 Survey - non eligible')
+      //-------------------------------------
+      var fields="";
+      var fields="Screening_ID|UID,name,mobile_number,email";
+      fields+=",age,fluent,smart_phone";
+      fields+=",osa,sbd,rls,narcolepsy,insomnia,none";
+      fields+=",shiftwork,shifts,sleep_hours,trouble_sleep,sleep_time,trouble_wake,wake_time,awake_type,commitments";
+      fields+=",problem,eligible"
+      m.fields=""+fields+",Submit_date,Submitted_by,_Delete";
+      //-------------------------------------
+      m.load=function(){
+        m.query={"Data.age":"N"}
+      }
+  }
+</script>
+<style>
+  VmInclude:__COMPONENT__/g/grid.01.css
+</style>
