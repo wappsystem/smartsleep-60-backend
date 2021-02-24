@@ -47,7 +47,7 @@
                 var html="<u style='cursor:pointer;green'>email</u>";
                 var s=records[I].Data['email_date'];
                 if(s!='' && s!=null && s!=undefined){
-                    html+=' <i style="color:green;font-weight: 900" class="far fa-check-circle"></i>';
+                  html="<u style='cursor:pointer'>"+records[I].Data.email_date+"</u> <i style='color:green;font-weight: 900' class='far fa-check-circle'></i>";
                 }
                 td.html(html);
                 td.find('u').on('click',function(){
