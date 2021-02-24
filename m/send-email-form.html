@@ -102,9 +102,10 @@
 				param.push(data.mobile_number) //3
 				param.push(url) //4
 				param.push(sms_url) //5
+				param.push(data.sms) //6
 				//$vm.alert('Send Email:'+param[0]+' Name:'+param[1]+' Access Code:'+param[2]+' Phone:'+param[3]); 
 				send_email(param);              
-				console.log(JSON.stringify(param))
+				console.log("AAA: " + JSON.stringify(param))
 				$vm.refresh=1;
                 //if(m.change_status==undefined) m.change_status=0;
                 m.change_status++;
@@ -114,11 +115,12 @@
             var send_email = function (param) {
                 var url = param[4]
                 var sms_url = param[5]
-                var data = {
+                var emaildata = {
                     "emailaddress": "" + param[0] + "",
                     "emailName": "" + param[1] + "",
                     "emailCode": "" + param[2] + ""
                 }
+				console.log(JSON.stringify(emaildata));
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
@@ -131,17 +133,18 @@
                 }
                 xmlHttp.open("POST", url, true); // true for asynchronous
                 xmlHttp.setRequestHeader("Content-Type", "application/json");
-                xmlHttp.send(JSON.stringify(data));
+                xmlHttp.send(JSON.stringify(emaildata));
+				
                 //------------------------------------
                 //SMS alert
 				//------------------------------------
-				if(data.sms == "Y"){
+				if(param[6] == "Y"){
 					var sms_data = {
-						"emailaddress": "" + param[3].replace(/-/g,'') + "@e2s.directsms.com.au",
+						"emailaddress": "" + param[3].replace(/-/g,'').replace(/0/,"61") + "@e2s.directsms.com.au",
 						"emailName": "" + param[1] + "",
 						"emailCode": "" + param[2] + ""
 					}
-					console.log(sms_url);
+					console.log(JSON.stringify(sms_data));
 					var sms_xmlHttp = new XMLHttpRequest();
 					sms_xmlHttp.onreadystatechange = function () {
 						if (this.readyState == 4 && this.status == 200) {
