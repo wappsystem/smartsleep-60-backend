@@ -8,7 +8,7 @@
       //-------------------------------------
       $('#title__ID').text('SmartSleep-60 Survey - eligible')
       //-------------------------------------
-      var fields="Screening_ID|UID,_telephone_interview,_send_email,_access_code,name,mobile_number,email,sms,age2";
+      var fields="Screening_ID|UID,_telephone_interview,_send_email,_access_code,_consult_notes,name,mobile_number,email,sms,age2";
       fields+=",age,fluent,smart_phone";
       fields+=",osa,sbd,rls,narcolepsy,insomnia,none";
       fields+=",shiftwork,shifts,sleep_hours,trouble_sleep,sleep_time,trouble_wake,wake_time,awake_type,commitments";
@@ -53,6 +53,17 @@
                 td.find('u').on('click',function(){
                     $vm.load_module_v2('send-email','',{record:records[I],email:'email_date',title:'Send Email',goback:1})
                 })
+                break;
+            case '_consult_notes':
+                var html="<u style='cursor:pointer'>Consult notes</u>";
+                var s=records[I].Data.File_Name
+                if(s!='' && s!=null && s!=undefined){
+                  html="<u style='cursor:pointer'>"+records[I].Data.File_Name+"</u> <i style='color:green;font-weight: 900' class='far fa-check-circle'></i>";
+                }
+                td.html(html);
+                td.find('u').on('click',function(){
+                  $vm.load_module('smartsleep-60-upload-file','',{record:records[I],goback:1});
+                });
                 break;
         }
       }

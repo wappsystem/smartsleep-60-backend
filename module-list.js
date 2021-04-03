@@ -5,6 +5,7 @@
         "panel-main-smartsleep-60-non-eligible":        {url:"$H/m/non-eligible-data.html",Table:"smartsleep-60-survey"},
         "panel-main-smartsleep-60-telephone-interview": {url:"$H/m/telephone-interview-data.html",Table:"smartsleep-60-survey",form_module:"smartsleep-60-telephone-interview"},
         "smartsleep-60-telephone-interview":            {url:"$H/m/telephone-interview-form.html",Table:"smartsleep-60-survey",task_name:"Telephone Interview"},
+        "smartsleep-60-upload-file":            {url:"$H/m/upload-file-form.html",Table:"smartsleep-60-survey",task_name:"Upload Consult Notes"},
         "smartsleep-60-access-code":            {url:"$H/m/access-code-form.html",Table:"smartsleep-60-survey",task_name:"Access Code"},
         "send-email":                           {url:"$H/m/send-email-form.html",Table:"smartsleep-60-survey",task_name:"Send Email"}
     }
