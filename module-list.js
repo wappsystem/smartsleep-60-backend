@@ -7,6 +7,7 @@
         "smartsleep-60-telephone-interview":            {url:"$H/m/telephone-interview-form.html",Table:"smartsleep-60-survey",task_name:"Telephone Interview"},
         "smartsleep-60-upload-file":            {url:"$H/m/upload-file-form.html",Table:"smartsleep-60-survey",task_name:"Upload Consult Notes"},
         "smartsleep-60-access-code":            {url:"$H/m/access-code-form.html",Table:"smartsleep-60-survey",task_name:"Access Code"},
+        "smartsleep-60-comments":            {url:"$H/m/comments-form.html",Table:"smartsleep-60-survey",task_name:"Comments"},
         "send-email":                           {url:"$H/m/send-email-form.html",Table:"smartsleep-60-survey",task_name:"Send Email"}
     }
     //for(m in modules){$vm.module_list[m]=modules[m];}
